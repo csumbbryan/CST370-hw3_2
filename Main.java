@@ -119,8 +119,9 @@ class Main
             return -1;
         }
 
-        void addPath(Node startNode, String nodes) {
-            Path path = new Path(startNode, nodes, this);
+        void addPath(int startNode, String nodes) {
+            Node sNode = this.getNode(startNode);
+            Path path = new Path(sNode, nodes, this);
             this.paths.add(path);
         }
 
@@ -265,12 +266,14 @@ class Main
         }
 
         String startNode = scanner.nextLine();
-        System.out.println("Start Node: " + startNode);
+        int startNodeInt = Integer.parseInt(startNode);
+        System.out.println("Start Node: " + startNodeInt);
+
         List<Node> perNodes = graph.nodes;
         perNodes.remove(Integer.parseInt(startNode));
-        Permute(graph, perNodes, Integer.parseInt(startNode), paths);
+        Permute(graph, perNodes, startNodeInt, paths);
         for (String path : paths) {
-            graph.addPath(graph.getNode(Integer.parseInt(startNode)), path);
+            graph.addPath(startNodeInt, path);
         }
 
         System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
