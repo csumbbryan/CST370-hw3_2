@@ -208,14 +208,14 @@ class Main
 
         Path(Node startNode, String nodes, Graph graph) {
             //Add checks for path leg (edge) does not exist
-            this.startNode = startNode;
-            this.pathName = "";
+            //this.startNode = startNode;
+            //this.pathName = "";
             String [] nodeValues = nodes.split(" ");
             boolean pathExists = true;
 
             //Create and check all edges in the path
             List<Edge> edges = new ArrayList<Edge>();
-            Edge edge1 = graph.getEdge(this.startNode.value, Integer.parseInt(nodeValues[0]));
+            Edge edge1 = graph.getEdge(startNode.value, Integer.parseInt(nodeValues[0]));
             if(edge1 == null) {
                 pathExists = false;
             } else {
@@ -231,7 +231,7 @@ class Main
                 }
             }
             if(pathExists) {
-                Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), this.startNode.value);
+                Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
                 if(edgeEnd == null) {
                     pathExists = false;
                 } else {
@@ -240,6 +240,8 @@ class Main
             }
             if(pathExists) {
                 //this.pathName = startNode.value + "->";
+                this.startNode = startNode;
+                this.pathName = "";
                 for (int i = 0; i < edges.size(); i++) {
                     this.addNodes(edges.get(i));
                     if(i == 0) {
