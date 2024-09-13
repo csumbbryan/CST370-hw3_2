@@ -202,6 +202,7 @@ class Main
                 nodes.set(startindex, temp);
             }
         }
+        return paths;
     }
 
     public static void main(String[] args) {
