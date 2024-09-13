@@ -233,9 +233,7 @@ class Main
 
         Permute(graph, graph.nodes, Integer.parseInt(startNode));
 
-        System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
-
-        System.out.println("Hello world!");
+        //System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
     }
 }
 
