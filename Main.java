@@ -371,7 +371,13 @@ class Main
         for (Node node : graph.nodes) {
             perNodes.add(node.copy());
         }
-        perNodes.remove(graph.getNode(Integer.parseInt(startNode)));//REQUIRES FIXING
+        //perNodes.remove(graph.getNode(Integer.parseInt(startNode)));//REQUIRES FIXING
+        for (Node node : perNodes) {
+            if(node.value == startNodeInt) {
+                perNodes.remove(node);
+                break;
+            }
+        }
         System.out.println("PerNodes: " + perNodes + "\n");
 
 
