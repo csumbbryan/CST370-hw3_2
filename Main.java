@@ -108,7 +108,7 @@ class Main
             nodes += "\n";
             String edges = "Edges: ";
             for (Edge edge : this.edges) {
-                edges += edge.node1.value + " " + edge.node2.value + " " + edge.weight + "/n";
+                edges += edge.node1.value + " " + edge.node2.value + " " + edge.weight + "\n";
             }
             edges += "\n";
             return nodes + edges;
