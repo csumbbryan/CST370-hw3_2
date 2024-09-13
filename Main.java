@@ -139,8 +139,12 @@ class Main
             }
             edges += "\n";
             String paths = "Paths: ";
-            for (Path path : this.paths) {
-                paths += "Path:" + path.pathName + "\n" + "Cost:" + path.totalWeight + "\n";
+            if (this.paths.isEmpty()) {
+                paths += "Path: " + "\n" + "Cost: -1" + "\n";
+            } else {
+                for (Path path : this.paths) {
+                    paths += "Path:" + path.pathName + "\n" + "Cost:" + path.totalWeight + "\n";
+                }
             }
             paths += "\n";
             return nodes + edges + paths;
@@ -390,10 +394,10 @@ class Main
             graph.addPath(startNodeInt, path);
         }
 
-
+        System.out.println("Paths: " + paths + "\n");
         System.out.println("Graph: " + "\nGraph Node Count: " + graph.nodeCount +
             "\nGraph Edge Count: " + graph.edgeCount + "\n" + graph + "\n");
-        System.out.println("Paths: " + paths + "\n");
+
     }
 }
 
