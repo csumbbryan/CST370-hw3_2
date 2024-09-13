@@ -272,7 +272,7 @@ class Main
         System.out.println("Start Node: " + startNodeInt);
 
 
-        List<Node> perNodes = new ArrayList<>();
+        List<Node> perNodes = new ArrayList<>(graph.nodes.size());
         Collections.copy(perNodes, graph.nodes);
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, startNodeInt, paths);
