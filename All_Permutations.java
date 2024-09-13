@@ -1,7 +1,7 @@
 // A sample program to generate permutations using a recursive function.
 // Reference: https://stackoverflow.com/questions/13218019/generating-permutations-of-an-int-array-using-java-error
 
-public class Main 
+public class All_Permutations //Renamed from Main
 {
     public static void Permute(int[] input, int startindex) 
     {
