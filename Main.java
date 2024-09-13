@@ -371,8 +371,10 @@ class Main
         for (Node node : graph.nodes) {
             perNodes.add(node.copy());
         }
-        perNodes.remove(Integer.parseInt(startNode));
+        perNodes.remove(graph.getNode(Integer.parseInt(startNode)));//REQUIRES FIXING
         System.out.println("PerNodes: " + perNodes + "\n");
+
+
         Permute(perNodes, startNodeInt, paths);
         for (String path : paths) {
             graph.addPath(startNodeInt, path);
