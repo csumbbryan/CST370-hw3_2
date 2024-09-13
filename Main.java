@@ -105,12 +105,12 @@ class Main
             for (Node node : this.nodes) {
                 nodes += node.value + " ";
             }
-            nodes += "/n";
+            nodes += "\n";
             String edges = "Edges: ";
             for (Edge edge : this.edges) {
                 edges += edge.node1.value + " " + edge.node2.value + " " + edge.weight + "/n";
             }
-            edges += "/n";
+            edges += "\n";
             return nodes + edges;
         }
     }
