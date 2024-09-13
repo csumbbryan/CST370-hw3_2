@@ -6,6 +6,7 @@ public class All_Permutations //Renamed from Main
     public static void Permute(int[] input, int startindex) 
     {
         int size = input.length;
+        System.out.println("Size: " + size + " StartIndex: " + startindex);
 
         if (size == startindex + 1) 
         {

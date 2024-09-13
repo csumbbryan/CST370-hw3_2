@@ -179,6 +179,7 @@ class Main
 
     public static void Permute(Graph graph, List<Node> nodes, int startindex) {
         int size = nodes.size();
+        System.out.println("Size: " + size + " StartIndex: " + startindex);
 
 
         if (size == startindex + 1) {
