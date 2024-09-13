@@ -269,12 +269,13 @@ class Main
         int startNodeInt = Integer.parseInt(startNode);
         System.out.println("Start Node: " + startNodeInt);
 
+        /*
         List<Node> perNodes = graph.nodes;
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, startNodeInt, paths);
         for (String path : paths) {
             graph.addPath(startNodeInt, path);
-        }
+        }*/
 
         System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
         System.out.println("Paths: " + paths);
