@@ -160,6 +160,9 @@ class Main
                 if(path.totalWeight == this.minPath) {
                     paths += path.pathName + "\n";
                 }
+                else {
+                    paths += "\n";
+                }
             }
             paths += "Cost: " + this.minPath + "\n";
             return paths;
