@@ -180,10 +180,10 @@ class Main
     public static void Permute(Graph graph, List<Node> nodes, int startindex) {
         int size = nodes.size();
         System.out.println("Size: " + size + " StartIndex: " + startindex);
+        graph.addPath(graph.getNode(startindex));
 
 
         if (size == startindex + 1) {
-            graph.addPath(graph.getNode(startindex));
             for (int i = 0; i < size; i++) {
                 System.out.print(nodes.get(i).value + "  ");
                 //Update this to add nodes to graph
