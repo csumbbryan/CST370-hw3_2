@@ -215,7 +215,7 @@ class Main
                     " Weight: " + edge.getWeight() +
                     " Total Weight: " + totalWeight);
             }
-            this.totalWeight = graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
+            this.totalWeight += graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
             pathName += startNode.value;
         }
 
