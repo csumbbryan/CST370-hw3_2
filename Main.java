@@ -371,7 +371,6 @@ class Main
         for (Node node : graph.nodes) {
             perNodes.add(node.copy());
         }
-        //perNodes.remove(graph.getNode(Integer.parseInt(startNode)));//REQUIRES FIXING
         for (Node node : perNodes) {
             if(node.value == startNodeInt) {
                 perNodes.remove(node);
@@ -381,10 +380,16 @@ class Main
         System.out.println("PerNodes: " + perNodes + "\n");
 
 
-        Permute(perNodes, startNodeInt, paths);
+        if(perNodes.size() > 1) {
+            Permute(perNodes, startNodeInt, paths);
+
+        } else {
+            paths.add(Integer.toString(perNodes.get(0).value));
+        }
         for (String path : paths) {
             graph.addPath(startNodeInt, path);
         }
+
 
         System.out.println("Graph: " + "\nGraph Node Count: " + graph.nodeCount +
             "\nGraph Edge Count: " + graph.edgeCount + "\n" + graph + "\n");
