@@ -196,7 +196,7 @@ class Main
                 nodes.set(startindex, temp);
                 System.out.println("StartIndex: " + startindex + " i: " + i);
 
-                Permute(graph, nodes, startindex + 1);
+                Permute(graph, nodes, startindex + 1, paths);
                 temp = nodes.get(i);
                 nodes.set(i, nodes.get(startindex));
                 nodes.set(startindex, temp);
@@ -213,6 +213,7 @@ class Main
         int nodeCountInt = Integer.parseInt(nodeCount);
         int edgeCountInt = Integer.parseInt(edgesCount);
         Graph graph = new Graph(nodeCountInt, edgeCountInt);
+        List <String> paths = new ArrayList<String>();
 
         for (int i = 0; i < edgeCountInt; i++) {
             String edge = scanner.nextLine();
@@ -232,7 +233,7 @@ class Main
         String startNode = scanner.nextLine();
         List<Node> perNodes = graph.nodes;
         perNodes.remove(Integer.parseInt(startNode));
-        Permute(graph, perNodes, Integer.parseInt(startNode));
+        Permute(graph, perNodes, Integer.parseInt(startNode), paths);
 
         System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
     }
