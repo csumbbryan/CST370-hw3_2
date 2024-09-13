@@ -179,13 +179,13 @@ class Main
 
     public static void Permute(Graph graph, List<Node> nodes, int startindex) {
         int size = nodes.size();
-        graph.addPath(graph.getNode(startindex));
+
 
         if (size == startindex + 1) {
+            graph.addPath(graph.getNode(startindex));
             for (int i = 0; i < size; i++) {
                 System.out.print(nodes.get(i).value + "  ");
                 //Update this to add nodes to graph
-
             }
             System.out.println();
         } else {
@@ -193,6 +193,7 @@ class Main
                 Node temp = nodes.get(i);
                 nodes.set(i, nodes.get(startindex));
                 nodes.set(startindex, temp);
+                System.out.println("StartIndex: " + startindex + " i: " + i);
 
                 Permute(graph, nodes, startindex + 1);
                 temp = nodes.get(i);
