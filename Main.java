@@ -230,9 +230,17 @@ class Main
                 }
             }
             if(pathExists) {
-                for (Edge edge : edges) {
-                    this.addNodes(edge);
-                    System.out.println("Node1: " + edge.node1.value + " Node2: " + edge.node2.value + " Weight: " + edge.getWeight());
+                //this.pathName = startNode.value + "->";
+                for (int i = 0; i < edges.size(); i++) {
+                    this.addNodes(edges.get(i));
+                    if(i == 0) {
+                        this.pathName += startNode.value + "->";
+                    }
+                    this.pathName += edges.get(i).node2.value + "->";
+                    if(i == edges.size() - 1) {
+                        this.pathName += edges.get(i).node2.value;
+                    }
+                    System.out.println("Node1: " + edges.get(i).node1.value + " Node2: " + edges.get(i).node2.value + " Weight: " + edges.get(i).getWeight());
                 }
             }
 
