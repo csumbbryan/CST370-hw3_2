@@ -230,8 +230,9 @@ class Main
         }
 
         String startNode = scanner.nextLine();
-
-        Permute(graph, graph.nodes, Integer.parseInt(startNode));
+        List<Node> perNodes = graph.nodes;
+        perNodes.remove(Integer.parseInt(startNode));
+        Permute(graph, perNodes, Integer.parseInt(startNode));
 
         //System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
     }
