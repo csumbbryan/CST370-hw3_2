@@ -234,7 +234,7 @@ class Main
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, Integer.parseInt(startNode));
 
-        //System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
+        System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
     }
 }
 
