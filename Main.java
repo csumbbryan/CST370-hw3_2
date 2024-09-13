@@ -229,8 +229,11 @@ class Main
                     edges.add(edgeEnd);
                 }
             }
-            for (Edge edge : edges) {
-                System.out.println("Node1: " + edge.node1.value + " Node2: " + edge.node2.value + " Weight: " + edge.getWeight());
+            if(pathExists) {
+                for (Edge edge : edges) {
+                    this.addNodes(edge);
+                    System.out.println("Node1: " + edge.node1.value + " Node2: " + edge.node2.value + " Weight: " + edge.getWeight());
+                }
             }
 
             /*
