@@ -155,6 +155,10 @@ class Main
         Node(int value) {
             this.value = value;
         }
+
+        public Node copy() {
+            return new Node(this.value);
+        }
     }
 
     public static class Edge {
@@ -273,7 +277,9 @@ class Main
 
 
         List<Node> perNodes = new ArrayList<>(graph.nodes.size());
-        Collections.copy(perNodes, graph.nodes);
+        for (Node node : graph.nodes) {
+            perNodes.add(node.copy());
+        }
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, startNodeInt, paths);
         for (String path : paths) {
