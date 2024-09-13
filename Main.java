@@ -177,18 +177,18 @@ class Main
         }
     }
 
-    public static void Permute(Graph graph, List<Node> nodes, int startindex) {
+    public static List<String> Permute(Graph graph, List<Node> nodes, int startindex, List<String> paths) {
         int size = nodes.size();
         System.out.println("Size: " + size + " StartIndex: " + startindex);
-        graph.addPath(graph.getNode(startindex));
-
 
         if (size == startindex + 1) {
+            String path = "";
             for (int i = 0; i < size; i++) {
                 System.out.print(nodes.get(i).value + "  ");
-                //Update this to add nodes to graph
+                path += nodes.get(i).value + " ";
             }
-            System.out.println();
+            paths.add(path);
+            return paths;
         } else {
             for (int i = startindex; i < size; i++) {
                 Node temp = nodes.get(i);
