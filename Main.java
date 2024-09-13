@@ -199,37 +199,56 @@ class Main
         }
 
         Path(Node startNode, String nodes, Graph graph) {
+            //Add checks for path leg (edge) does not exist
             this.startNode = startNode;
             String [] nodeValues = nodes.split(" ");
-            //this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodeValues[0]));
+            boolean pathExists = true;
+
+
             pathName += startNode.value + "->";
             pathName += nodeValues[0] + "->";
-            this.addNodes(graph.getEdge(startNode.value, Integer.parseInt(nodeValues[0])));
+            Edge edge1 = graph.getEdge(startNode.value, Integer.parseInt(nodeValues[0]));
+            if(edge1 == null) {
+                pathExists = false;
+            } else {
+                this.addNodes(edge1);
+            }
             System.out.println("Start Node: " + startNode.value +
                 " Node1: " + startNode.value +
                 " Node2: " + nodeValues[0] +
                 " Weight: " + graph.getWeight(startNode.value, Integer.parseInt(nodeValues[0])) +
                 " Total Weight: " + totalWeight);
-            for (int i = 0; i < nodeValues.length - 1; i++) {
+            for (int i = 0; i < nodeValues.length - 1 && pathExists; i++) {
                 Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]), Integer.parseInt(nodeValues[i+1]));
-                this.addNodes(edge);
-                //totalWeight += edge.getWeight();
-                pathName += edge.node2.value + "->";
-                System.out.println("Start Node: " + startNode.value +
-                    " Node1: " + edge.node1.value +
-                    " Node2: " + edge.node2.value +
-                    " Weight: " + edge.getWeight() +
-                    " Total Weight: " + totalWeight);
+                if(edge == null) {
+                    pathExists = false;
+                    break;
+                } else {
+                    this.addNodes(edge);
+                    pathName += edge.node2.value + "->";
+                    System.out.println("Start Node: " + startNode.value +
+                        " Node1: " + edge.node1.value +
+                        " Node2: " + edge.node2.value +
+                        " Weight: " + edge.getWeight() +
+                        " Total Weight: " + totalWeight);
+                }
             }
-            this.addNodes(graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value));
-            //this.totalWeight += graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
-            System.out.println("Start Node: " + startNode.value +
-                " Node1: " + startNode.value +
-                " Node2: " + nodeValues[(nodeValues.length - 1)] +
-                " Weight: " + graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value) +
-                " Total Weight: " + totalWeight);
-            System.out.println("...");
-            pathName += startNode.value;
+            if(pathExists) {
+                Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
+                if(edgeEnd == null) {
+                    pathExists = false;
+                } else {
+                    this.addNodes(edgeEnd);
+                    System.out.println("Start Node: " + startNode.value +
+                        " Node1: " + startNode.value +
+                        " Node2: " + nodeValues[(nodeValues.length - 1)] +
+                        " Weight: " + graph.getWeight(
+                        Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value) +
+                        " Total Weight: " + totalWeight);
+                    System.out.println("...");
+                    pathName += startNode.value;
+                }
+            }
         }
 
         void addNodes(Edge edge) {
