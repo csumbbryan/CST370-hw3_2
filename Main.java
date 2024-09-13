@@ -242,6 +242,7 @@ class Main
                     }
                     System.out.println("Node1: " + edges.get(i).node1.value + " Node2: " + edges.get(i).node2.value + " Weight: " + edges.get(i).getWeight());
                 }
+                System.out.println("...");
             }
 
             /*
