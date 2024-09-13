@@ -237,6 +237,7 @@ class Main
         Permute(graph, perNodes, Integer.parseInt(startNode), paths);
 
         System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
+        System.out.println("Paths: " + paths);
     }
 }
 
