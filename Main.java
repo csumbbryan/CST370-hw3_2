@@ -140,7 +140,7 @@ class Main
             edges += "\n";
             String paths = "Paths: ";
             for (Path path : this.paths) {
-                paths += path.startNode.value + " " + path.totalWeight + "\n";
+                paths += "Path:" + path.pathName + "\n" + "Cost:" + path.totalWeight + "\n";
             }
             paths += "\n";
             return nodes + edges + paths;
@@ -185,13 +185,17 @@ class Main
         List<Node> nodes = new ArrayList<Node>();
         Node startNode;
         int totalWeight;
+
+        String pathName;
         Path() {
             this.totalWeight = 0;
+            this.pathName = "";
         }
 
         Path(Node startNode) {
             this.startNode = startNode;
             this.totalWeight = 0;
+            this.pathName = "";
         }
 
         Path(Node startNode, String nodes, Graph graph) {
@@ -200,12 +204,15 @@ class Main
             System.out.println("Path Nodes: " + nodes + " Path Node Values: " + nodeValues[0] + " " + nodeValues[nodeValues.length-1]);
             System.out.println("Start Node: " + startNode);
             this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodeValues[0]));
+            pathName += startNode.value + "->";
             for (int i = 0; i < nodeValues.length - 1; i++) {
                 Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]), Integer.parseInt(nodeValues[i+1]));
                 this.addNodes(edge);
                 totalWeight += edge.getWeight();
+                pathName += edge.node2.value + "->";
             }
             this.totalWeight = graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
+            pathName += startNode.value;
         }
 
         void addNodes(Edge edge) {
