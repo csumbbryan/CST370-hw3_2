@@ -155,10 +155,13 @@ class Main
         }
 
         public String printPaths() {
-            String paths = "Paths: ";
+            String paths = "Path:";
             for (Path path : this.paths) {
-                paths += "Path:" + path.pathName + "\n" + "Cost:" + path.totalWeight + "\n";
+                if(path.totalWeight == this.minPath) {
+                    paths += path.pathName + "\n";
+                }
             }
+            paths += "Cost: " + this.minPath + "\n";
             return paths;
         }
     }
