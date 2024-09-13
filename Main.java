@@ -372,8 +372,8 @@ class Main
             graph.addPath(startNodeInt, path);
         }
 
-        System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
-        System.out.println("Paths: " + paths);
+        System.out.println("Graph: " + "\n" + graph.nodeCount + "\n" + graph.edgeCount + "\n" + graph + "\n");
+        System.out.println("Paths: " + paths + "\n");
     }
 }
 
