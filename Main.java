@@ -436,7 +436,7 @@ class Main
             paths.add(Integer.toString(perNodes.get(0).value));
         }
         for (String path : paths) {
-            if(pathExists(graph.getNode(startNodeInt), path, graph)) {
+            if(pathExists(startNodeInt, path, graph)) {
                 graph.addPath(startNodeInt, path);
             }
         }
