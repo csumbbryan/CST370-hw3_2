@@ -94,6 +94,7 @@ class Main
 
         void addPath(Node startNode) {
             Path path = new Path(startNode);
+            this.paths.add(path);
         }
 
         void addPath(Node startNode, List<Edge> edges) {
