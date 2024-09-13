@@ -34,16 +34,12 @@ class Main
             this.nodeCount = 0;
             this.edgeCount = 0;
             this.minPath = -1;
-            this.nodes = null;
-            this.edges = null;
         }
 
         Graph(int nodeCount, int edgeCount) {
             this.nodeCount = nodeCount;
             this.edgeCount = edgeCount;
             this.minPath = -1;
-            this.nodes = null;
-            this.edges = null;
         }
 
         void addNode(Node node) {
