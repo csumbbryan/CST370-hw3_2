@@ -22,7 +22,7 @@ public class All_Permutations //Renamed from Main
                 int temp = input[i];
                 input[i] = input[startindex];
                 input[startindex] = temp;
-                System.out.println("i: " + i + "startindex: " + startindex);
+                System.out.println("i: " + i + " startindex: " + startindex);
 
                 Permute(input, startindex + 1);
                 temp = input[i];
