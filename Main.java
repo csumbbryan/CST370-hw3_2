@@ -222,14 +222,6 @@ class Main
                 }
             }
             if(pathExists) {
-                Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
-                if(edgeEnd == null) {
-                    pathExists = false;
-                } else {
-                    edges.add(edgeEnd);
-                }
-            }
-            if(pathExists) {
                 //this.pathName = startNode.value + "->";
                 for (int i = 0; i < edges.size(); i++) {
                     this.addNodes(edges.get(i));
