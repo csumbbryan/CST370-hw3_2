@@ -222,15 +222,23 @@ class Main
                 }
             }
             if(pathExists) {
+                Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
+                if(edgeEnd == null) {
+                    pathExists = false;
+                } else {
+                    edges.add(edgeEnd);
+                }
+            }
+            if(pathExists) {
                 //this.pathName = startNode.value + "->";
                 for (int i = 0; i < edges.size(); i++) {
                     this.addNodes(edges.get(i));
                     if(i == 0) {
                         this.pathName += startNode.value + "->";
-                    }
-                    this.pathName += edges.get(i).node2.value + "->";
-                    if(i == edges.size() - 1) {
+                    } else if(i == edges.size() - 1) {
                         this.pathName += edges.get(i).node2.value;
+                    } else {
+                        this.pathName += edges.get(i).node2.value + "->";
                     }
                     System.out.println("Node1: " + edges.get(i).node1.value + " Node2: " + edges.get(i).node2.value + " Weight: " + edges.get(i).getWeight());
                 }
