@@ -190,7 +190,7 @@ class Main
         Path(Node startNode, String nodes, Graph graph) {
             this.startNode = startNode;
             String [] nodeValues = nodes.split(" ");
-            System.out.println("Path Nodes: " + nodes + " Path Node Values: " + nodeValues);
+            System.out.println("Path Nodes: " + nodes + " Path Node Values: " + nodeValues[0] + " " + nodeValues[nodeValues.length-1]);
             this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodeValues[0]));
             for (int i = 0; i < nodeValues.length - 1; i++) {
                 Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]), Integer.parseInt(nodeValues[i+1]));
