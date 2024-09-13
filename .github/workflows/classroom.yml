@@ -1,0 +1,76 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: T0
+      id: t0
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: T0
+        setup-command: javac Main.java
+        command: java Main < input00.txt
+        input: ''
+        expected-output: |
+          Path:0->1->3->2->0
+          Cost:11
+        comparison-method: contains
+        timeout: 10
+    - name: T1
+      id: t1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: T1
+        setup-command: javac Main.java
+        command: java Main < input01.txt
+        input: ''
+        expected-output: |
+          Path:
+          Cost:-1
+        comparison-method: contains
+        timeout: 10
+    - name: T2
+      id: t2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: T2
+        setup-command: javac Main.java
+        command: java Main < input02.txt
+        input: ''
+        expected-output: |
+          Path:3->0->2->1->4->3
+          Cost:185
+        comparison-method: contains
+        timeout: 10
+    - name: T3
+      id: t3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: T3
+        setup-command: javac Main.java
+        command: java Main < input03.txt
+        input: ''
+        expected-output: |
+          Path:1->0->1
+          Cost:10
+        comparison-method: contains
+        timeout: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        T0_RESULTS: "${{steps.t0.outputs.result}}"
+        T1_RESULTS: "${{steps.t1.outputs.result}}"
+        T2_RESULTS: "${{steps.t2.outputs.result}}"
+        T3_RESULTS: "${{steps.t3.outputs.result}}"
+      with:
+        runners: t0,t1,t2,t3
