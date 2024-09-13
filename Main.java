@@ -304,7 +304,7 @@ class Main
         }
     }
 
-    public static List<String> Permute(Graph graph, List<Node> nodes, int startindex, List<String> paths) {
+    public static List<String> Permute(List<Node> nodes, int startindex, List<String> paths) {
         int size = nodes.size();
         System.out.println("Size: " + size + " StartIndex: " + startindex);
 
@@ -323,7 +323,7 @@ class Main
                 nodes.set(startindex, temp);
                 System.out.println("StartIndex: " + startindex + " i: " + i);
 
-                Permute(graph, nodes, startindex + 1, paths);
+                Permute(nodes, startindex + 1, paths);
                 temp = nodes.get(i);
                 nodes.set(i, nodes.get(startindex));
                 nodes.set(startindex, temp);
@@ -368,7 +368,8 @@ class Main
             perNodes.add(node.copy());
         }
         perNodes.remove(Integer.parseInt(startNode));
-        Permute(graph, perNodes, startNodeInt, paths);
+        System.out.println("PerNodes: " + perNodes + "\n");
+        Permute(perNodes, startNodeInt, paths);
         for (String path : paths) {
             graph.addPath(startNodeInt, path);
         }
