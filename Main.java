@@ -235,6 +235,7 @@ class Main
                     this.addNodes(edges.get(i));
                     if(i == 0) {
                         this.pathName += startNode.value + "->";
+                        this.pathName += edges.get(i).node2.value + "->";
                     } else if(i == edges.size() - 1) {
                         this.pathName += edges.get(i).node2.value;
                     } else {
