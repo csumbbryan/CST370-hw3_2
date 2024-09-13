@@ -119,7 +119,7 @@ class Main
             return -1;
         }
 
-        void addPath(Node startNode, List<String> nodes) {
+        void addPath(Node startNode, String nodes) {
             Path path = new Path(startNode, nodes, this);
             this.paths.add(path);
         }
@@ -187,15 +187,16 @@ class Main
             this.totalWeight = 0;
         }
 
-        Path(Node startNode, List<String> nodes, Graph graph) {
+        Path(Node startNode, String nodes, Graph graph) {
             this.startNode = startNode;
-            this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodes.get(0)));
-            for (int i = 0; i < nodes.size() - 1; i++) {
-                Edge edge = graph.getEdge(Integer.parseInt(nodes.get(i)), Integer.parseInt(nodes.get(i+1)));
+            String [] nodeValues = nodes.split(" ");
+            this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodeValues[0]));
+            for (int i = 0; i < nodeValues.length - 1; i++) {
+                Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]), Integer.parseInt(nodeValues[i+1]));
                 this.addNodes(edge);
                 totalWeight += edge.getWeight();
             }
-            this.totalWeight = graph.getWeight(Integer.parseInt(nodes.get(nodes.size() - 1)), startNode.value);
+            this.totalWeight = graph.getWeight(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode.value);
         }
 
         void addNodes(Edge edge) {
@@ -265,6 +266,9 @@ class Main
         List<Node> perNodes = graph.nodes;
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, Integer.parseInt(startNode), paths);
+        for (String path : paths) {
+            graph.addPath(graph.getNode(Integer.parseInt(startNode)), path);
+        }
 
         System.out.println("Graph: " + graph.nodeCount + " " + graph.edgeCount + " " + graph);
         System.out.println("Paths: " + paths);
