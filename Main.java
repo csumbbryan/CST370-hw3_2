@@ -159,6 +159,10 @@ class Main
         public Node copy() {
             return new Node(this.value);
         }
+
+        public String toString() {
+            return Integer.toString(this.value);
+        }
     }
 
     public static class Edge {
