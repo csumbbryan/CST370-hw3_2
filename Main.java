@@ -265,6 +265,7 @@ class Main
         }
 
         String startNode = scanner.nextLine();
+        System.out.println("Start Node: " + startNode);
         List<Node> perNodes = graph.nodes;
         perNodes.remove(Integer.parseInt(startNode));
         Permute(graph, perNodes, Integer.parseInt(startNode), paths);
