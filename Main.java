@@ -335,19 +335,16 @@ class Main
         Edge edge1 = graph.getEdge(startNode, Integer.parseInt(nodeValues[0]));
         if(edge1 == null) {
             pathExists = false;
+            return pathExists;
         } else {
-            edges.add(edge1);
-        }
-        for (int i = 0; i < nodeValues.length - 1 && pathExists; i++) {
-            Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]), Integer.parseInt(nodeValues[i+1]));
-            if(edge == null) {
-                pathExists = false;
-                break;
-            } else {
-                edges.add(edge);
+            for (int i = 0; i < nodeValues.length - 1 && pathExists; i++) {
+                Edge edge = graph.getEdge(Integer.parseInt(nodeValues[i]),
+                    Integer.parseInt(nodeValues[i + 1]));
+                if (edge == null) {
+                    pathExists = false;
+                    break;
+                }
             }
-        }
-        if(pathExists) {
             Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode);
             if(edgeEnd == null) {
                 pathExists = false;
@@ -355,6 +352,7 @@ class Main
                 edges.add(edgeEnd);
             }
         }
+        return pathExists;
     }
 
     public static List<String> Permute(List<Node> nodes, int startindex, List<String> paths) {
