@@ -83,6 +83,24 @@ class Main
             this.edges.add(edge);
         }
 
+        Edge getEdge(Node node1, Node node2) {
+            for (Edge edge : this.edges) {
+                if (edge.node1 == node1 && edge.node2 == node2) {
+                    return edge;
+                }
+            }
+            return null;
+        }
+
+        Edge getEdge(int node1, int node2) {
+            for (Edge edge : this.edges) {
+                if (edge.node1.value == node1 && edge.node2.value == node2) {
+                    return edge;
+                }
+            }
+            return null;
+        }
+
         int getWeight(Node node1, Node node2) {
             for (Edge edge : this.edges) {
                 if (edge.node1 == node1 && edge.node2 == node2) {
@@ -92,17 +110,18 @@ class Main
             return -1;
         }
 
-        void addPath(Node startNode) {
-            Path path = new Path(startNode);
-            this.paths.add(path);
+        int getWeight(int node1, int node2) {
+            for (Edge edge : this.edges) {
+                if (edge.node1.value == node1 && edge.node2.value == node2) {
+                    return edge.getWeight();
+                }
+            }
+            return -1;
         }
 
-        void addPath(Node startNode, List<Edge> edges) {
-            for (Edge edge : edges) {
-                Path path = new Path(startNode);
-                path.addNodes(edge);
-                this.paths.add(path);
-            }
+        void addPath(Node startNode, List<String> nodes) {
+            Path path = new Path(startNode, nodes, this);
+            this.paths.add(path);
         }
 
         public String toString() {
@@ -166,6 +185,17 @@ class Main
         Path(Node startNode) {
             this.startNode = startNode;
             this.totalWeight = 0;
+        }
+
+        Path(Node startNode, List<String> nodes, Graph graph) {
+            this.startNode = startNode;
+            this.totalWeight = graph.getWeight(startNode.value, Integer.parseInt(nodes.get(0)));
+            for (int i = 0; i < nodes.size() - 1; i++) {
+                Edge edge = graph.getEdge(Integer.parseInt(nodes.get(i)), Integer.parseInt(nodes.get(i+1)));
+                this.addNodes(edge);
+                totalWeight += edge.getWeight();
+            }
+            this.totalWeight = graph.getWeight(Integer.parseInt(nodes.get(nodes.size() - 1)), startNode.value);
         }
 
         void addNodes(Edge edge) {
