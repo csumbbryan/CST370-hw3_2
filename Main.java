@@ -201,6 +201,7 @@ class Main
         Path(Node startNode, String nodes, Graph graph) {
             //Add checks for path leg (edge) does not exist
             this.startNode = startNode;
+            System.out.println("Path Start Node: " + startNode.value);
             String [] nodeValues = nodes.split(" ");
             boolean pathExists = true;
 
