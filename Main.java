@@ -267,7 +267,7 @@ class Main
         boolean pathExists = true;
 
         //Create and check all edges in the path
-        List<Edge> edges = new ArrayList<Edge>();
+        //List<Edge> edges = new ArrayList<Edge>();
         Edge edge1 = graph.getEdge(startNode, Integer.parseInt(nodeValues[0]));
         if(edge1 == null) {
             pathExists = false;
@@ -285,7 +285,7 @@ class Main
             if(edgeEnd == null) {
                 pathExists = false;
             } else {
-                edges.add(edgeEnd);
+                //edges.add(edgeEnd);
             }
         }
         return pathExists;
@@ -362,24 +362,19 @@ class Main
                 perNodes.add(node.copy());
             }
         }
-        /*
-        for (Node node : perNodes) {
-            if(node.value == startNodeInt) {
-                perNodes.remove(node);
-                break;
-            }
-        }*/
 
+        //Create a list of paths and check if they exist in the graph
         List <String> paths = new ArrayList<>();
-        if(perNodes.size() > 1) {
+        if(perNodes.size() > 1) { //Only check permutations if there is more than one intermediate node
             Permute(perNodes, startNodeInt, paths);
-
         } else {
             paths.add(Integer.toString(perNodes.get(0).value));
         }
 
+        //Add the paths to the graph if the path exists
         for (String path : paths) {
-            if(pathExists(startNodeInt, path, graph)) {
+            if(pathExists(startNodeInt, path, graph)) { //Check if permutation results in path that starts and ends
+                //with starting node
                 graph.addPath(startNodeInt, path);
             }
         }
