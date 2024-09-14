@@ -318,15 +318,19 @@ class Main
 
     public static void main(String[] args) {
 
+        //Open scanner to read in user input
         Scanner scanner = new Scanner(System.in);
+
+        //Scan in first two lines which correspond to node count and number of edges
         String nodeCount = scanner.nextLine();
         String edgesCount = scanner.nextLine();
 
         int nodeCountInt = Integer.parseInt(nodeCount);
         int edgeCountInt = Integer.parseInt(edgesCount);
-        Graph graph = new Graph(nodeCountInt, edgeCountInt);
-        List <String> paths = new ArrayList<String>();
 
+        //Create a new graph with node count and edge count, then add nodes and edges
+        //to the graph from the user input
+        Graph graph = new Graph(nodeCountInt, edgeCountInt);
         for (int i = 0; i < edgeCountInt; i++) {
             String edge = scanner.nextLine();
             String[] edgeValues = edge.split(" ");
@@ -342,26 +346,38 @@ class Main
             graph.addEdge(new Edge(graph.getNode(node1), graph.getNode(node2), weight));
         }
 
+        //Scan in the start node with is the final line of input
         String startNode = scanner.nextLine();
+        if(!scanner.hasNextLine()) {
+            scanner.close(); //close scanner as all lines of input have been read
+        } else {
+            System.out.println("Error: More input than expected");
+        }
         int startNodeInt = Integer.parseInt(startNode);
 
+        //Create a list of nodes that exclude the starting node
         List<Node> perNodes = new ArrayList<>(graph.nodes.size());
         for (Node node : graph.nodes) {
-            perNodes.add(node.copy());
+            if(node.value != startNodeInt) {
+                perNodes.add(node.copy());
+            }
         }
+        /*
         for (Node node : perNodes) {
             if(node.value == startNodeInt) {
                 perNodes.remove(node);
                 break;
             }
-        }
+        }*/
 
+        List <String> paths = new ArrayList<>();
         if(perNodes.size() > 1) {
             Permute(perNodes, startNodeInt, paths);
 
         } else {
             paths.add(Integer.toString(perNodes.get(0).value));
         }
+
         for (String path : paths) {
             if(pathExists(startNodeInt, path, graph)) {
                 graph.addPath(startNodeInt, path);
