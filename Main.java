@@ -250,9 +250,7 @@ class Main
                 } else {
                     this.pathName += edges.get(i).node2.value + "->";
                 }
-                System.out.println("Node1: " + edges.get(i).node1.value + " Node2: " + edges.get(i).node2.value + " Weight: " + edges.get(i).getWeight());
             }
-            System.out.println("...");
         }
 
         void addNodes(Edge edge) {
@@ -295,7 +293,6 @@ class Main
 
     public static List<String> Permute(List<Node> nodes, int startindex, List<String> paths) {
         int size = nodes.size();
-        //System.out.println("Size: " + size + " StartIndex: " + startindex);
 
         if (size == startindex + 1) {
             String path = "";
@@ -310,7 +307,6 @@ class Main
                 Node temp = nodes.get(i);
                 nodes.set(i, nodes.get(startindex));
                 nodes.set(startindex, temp);
-                System.out.println("StartIndex: " + startindex + " i: " + i);
 
                 Permute(nodes, startindex + 1, paths);
                 temp = nodes.get(i);
@@ -349,8 +345,6 @@ class Main
 
         String startNode = scanner.nextLine();
         int startNodeInt = Integer.parseInt(startNode);
-        System.out.println("Start Node: " + startNodeInt);
-
 
         List<Node> perNodes = new ArrayList<>(graph.nodes.size());
         for (Node node : graph.nodes) {
@@ -362,8 +356,6 @@ class Main
                 break;
             }
         }
-        System.out.println("PerNodes: " + perNodes + "\n");
-
 
         if(perNodes.size() > 1) {
             Permute(perNodes, startNodeInt, paths);
@@ -376,10 +368,6 @@ class Main
                 graph.addPath(startNodeInt, path);
             }
         }
-
-        System.out.println("Paths: " + paths + "\n");
-        System.out.println("Graph: " + "\nGraph Node Count: " + graph.nodeCount +
-            "\nGraph Edge Count: " + graph.edgeCount + "\n" + graph + "\n");
 
         System.out.println(graph.printPaths());
     }
