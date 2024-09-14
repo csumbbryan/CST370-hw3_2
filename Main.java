@@ -297,7 +297,6 @@ class Main
         if (size == startindex + 1) {
             String path = "";
             for (int i = 0; i < size; i++) {
-                System.out.print(nodes.get(i).value + "  ");
                 path += nodes.get(i).value + " ";
             }
             paths.add(path);
