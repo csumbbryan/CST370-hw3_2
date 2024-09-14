@@ -266,8 +266,7 @@ class Main
         String [] nodeValues = nodes.split(" ");
         boolean pathExists = true;
 
-        //Create and check all edges in the path
-        //List<Edge> edges = new ArrayList<Edge>();
+        //Check all edges in the path
         Edge edge1 = graph.getEdge(startNode, Integer.parseInt(nodeValues[0]));
         if(edge1 == null) {
             pathExists = false;
@@ -284,8 +283,6 @@ class Main
             Edge edgeEnd = graph.getEdge(Integer.parseInt(nodeValues[(nodeValues.length - 1)]), startNode);
             if(edgeEnd == null) {
                 pathExists = false;
-            } else {
-                //edges.add(edgeEnd);
             }
         }
         return pathExists;
