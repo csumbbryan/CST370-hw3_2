@@ -156,13 +156,14 @@ class Main
 
         public String printPaths() {
             String paths = "Path:";
-            for (Path path : this.paths) {
-                if(path.totalWeight == this.minPath) {
-                    paths += path.pathName + "\n";
+            if(!this.paths.isEmpty()) {
+                for (Path path : this.paths) {
+                    if (path.totalWeight == this.minPath) {
+                        paths += path.pathName + "\n";
+                    }
                 }
-                else {
-                    paths += "\n";
-                }
+            } else {
+                paths += "\n";
             }
             paths += "Cost: " + this.minPath + "\n";
             return paths;
