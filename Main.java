@@ -9,9 +9,11 @@
 
 // Finish the head comment with Abstract, Name, and Date.
 /*
- * Abstract: Describe the main ideas of the program.
- * Name: Write your name
- * Date: MM/DD/YYYY
+ * Title: CST370-HW3_2_Java
+ * Abstract: Program accepts a graph data structure type input from a user, and outputs the shortest
+ * path from a given node through all other nodes and back to the starting node.
+ * Name: Bryan Zanoli
+ * Date: 9/17/2024
  */
 
 import java.sql.Array;
