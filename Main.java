@@ -167,7 +167,7 @@ class Main
             } else {
                 paths += "\n";
             }
-            paths += "Cost:" + this.minPath + "\n";
+            paths += "Cost:" + this.minPath;
             return paths;
         }
     }
