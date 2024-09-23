@@ -363,7 +363,7 @@ class Main
         //Create a list of paths and check if they exist in the graph
         List <String> paths = new ArrayList<>();
         if(perNodes.size() > 1) { //Only check permutations if there is more than one intermediate node
-            Permute(perNodes, startNodeInt, paths);
+            Permute(perNodes, 0, paths);
         } else {
             paths.add(Integer.toString(perNodes.get(0).value));
         }
